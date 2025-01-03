@@ -5,8 +5,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3c8b8b24-b2ca-4a7d-98ff-c28c1418ced4" >
-		<http:listener-connection host="0.0.0.0" port="8082" />
+		<http:listener-connection host="${http.host}" port="${http.port}" />
 	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="8220a133-39c9-4c59-96b7-5d10718d3bd0" file="config-prop\dev-prop.yaml" />
+	<global-property doc:name="Global Property" doc:id="9035c9ff-2bb6-4cfb-a5fa-62ee36bccf58" name="env" value="sandbox" />
 	<flow name="cicd-connected-applicationFlow" doc:id="26b3e3e0-1f4f-4e07-a39e-c5635562e1c9" >
 		<http:listener doc:name="Listener" doc:id="84d4b86e-7810-48c3-a9f0-21c62603fb4b" config-ref="HTTP_Listener_config" path="/cicd"/>
 		<set-payload value="heloo connectrd" doc:name="Set Payload" doc:id="02e6a80e-f6d8-4d53-aa59-31a2981f06e2" />
