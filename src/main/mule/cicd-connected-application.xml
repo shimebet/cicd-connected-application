@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3c8b8b24-b2ca-4a7d-98ff-c28c1418ced4" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="cicd-connected-applicationFlow" doc:id="26b3e3e0-1f4f-4e07-a39e-c5635562e1c9" >
+		<http:listener doc:name="Listener" doc:id="84d4b86e-7810-48c3-a9f0-21c62603fb4b" config-ref="HTTP_Listener_config" path="/cicd"/>
+		<set-payload value="heloo connectrd" doc:name="Set Payload" doc:id="02e6a80e-f6d8-4d53-aa59-31a2981f06e2" />
+		<logger level="INFO" doc:name="Logger" doc:id="eb786615-0229-4379-930e-39ff68574b41" message="#[payload]"/>
+	</flow>
+</mule>
